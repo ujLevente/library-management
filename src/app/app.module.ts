@@ -7,7 +7,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { IndexPageComponent } from './index-page/index-page.component';
+import { RouterModule, Routes } from "@angular/router";
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: WelcomePageComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -16,11 +24,12 @@ import { IndexPageComponent } from './index-page/index-page.component';
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    IndexPageComponent
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
