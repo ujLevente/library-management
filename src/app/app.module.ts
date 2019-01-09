@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AdvancesearchComponent } from './advancesearch/advancesearch.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavigationComponent,
     NavbarComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    AdvancesearchComponent
   ],
   imports: [
     BrowserModule,
