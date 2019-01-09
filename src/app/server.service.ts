@@ -18,10 +18,17 @@ export class ServerService {
   constructor(private http: HttpClient) { }
 
   getBookDetails() {
-    return this.http.get<Config>(this.openLibUrl)
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
+    return this.http.get(this.openLibUrl)
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      )
+      .catch(
+        (error: Response) => {
+          return Observable.throw('Something went wrong');
+        }
       );
   }
 
