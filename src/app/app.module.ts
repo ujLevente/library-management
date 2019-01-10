@@ -8,19 +8,12 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { RouterModule, Routes } from '@angular/router';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: WelcomePageComponent
-  }
-];
-import { BookdetailsComponent } from './bookdetails/bookdetails.component';
-import {ServerService} from './server.service';
-
-const routes: Routes = [];
+import { AdvancesearchComponent } from './advancesearch/advancesearch.component';
+import {FormsModule} from "@angular/forms";
+import { SearchresultComponent } from './searchresult/searchresult.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
+import {ServerService} from "./server.service";
 
 @NgModule({
   declarations: [
@@ -31,13 +24,16 @@ const routes: Routes = [];
     SidebarComponent,
     BookdetailsComponent,
     SidebarComponent,
-    WelcomePageComponent
+    SidebarComponent,
+    AdvancesearchComponent,
+    SearchresultComponent,
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
