@@ -21,14 +21,15 @@ const httpOptions = {
 @Injectable()
 export class ServerService {
   configUrl = 'assets/config.json';
-  openLibUrl = 'https://openlibrary.org/api/books?bibkeys=OLID:OL7850499M&jscmd=data&format=json';
+  openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
+  // OL9724026M
 
 
   constructor(private http: HttpClient) { }
 
-  getBookDetails() {
+  getBookDetails(olId) {
     console.log('getting book details');
-    return this.http.get(this.openLibUrl)
+    return this.http.get(this.openLibUrl + olId)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
