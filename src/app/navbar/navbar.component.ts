@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  myGroup: FormGroup
+
+  constructor() {
+    this.myGroup = new FormGroup({null: new FormControl()});
+  }
 
   ngOnInit() {
   }
