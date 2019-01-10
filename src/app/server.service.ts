@@ -27,6 +27,7 @@ export class ServerService {
   constructor(private http: HttpClient) { }
 
   getBookDetails() {
+    console.log('getting book details');
     return this.http.get(this.openLibUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times

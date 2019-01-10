@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { ServerService } from '../server.service';
+import {Component, NgModule, OnInit} from '@angular/core';
+import {ServerService} from '../server.service';
 
 @Component({
   selector: 'app-bookdetails',
@@ -7,19 +7,28 @@ import { ServerService } from '../server.service';
   styleUrls: ['./bookdetails.component.css']
 })
 
+@NgModule()
+
 export class BookdetailsComponent implements OnInit {
 
-  contents: any;
+  bookDetails: any;
+  title = 'xx';
 
-  constructor(private serverService: ServerService) {
+  constructor(public serverService: ServerService) {
   }
 
   ngOnInit() {
+    // this.onGetBookDetails();
   }
 
   onGetBookDetails() {
     console.log('onGetBookDetails');
-    this.serverService.getBookDetails().subscribe(results => console.log(results), error => console.log(error));
-    // console.log(this.contents);
+    this.serverService.getBookDetails().subscribe(results => this.asd(results));
+    // console.log(this.bookDetails['title']);
+    // this.title = this.bookDetails['OLID:OL7850499M'];
+  }
+  asd(details) {
+    console.log('asd');
+    this.title = details['OLID:OL7850499M'].title;
   }
 }
