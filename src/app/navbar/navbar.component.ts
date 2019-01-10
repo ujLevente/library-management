@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ServerService} from '../server.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  value;
+
+  constructor(public serverService: ServerService) {
+  }
 
   ngOnInit() {
   }
 
+  onQuickSearch() {
+    const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
+    this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
+
+  }
+
+  qSearchResult(results) {
+    console.log(results.docs[0].edition_key[0]);
+    window.location.href = '/book/' + results.docs[0].cover_edition_key;
+  }
 }

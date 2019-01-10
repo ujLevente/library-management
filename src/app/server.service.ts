@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
 export interface Config {
   heroesUrl: string;
@@ -13,7 +13,7 @@ export interface Config {
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     'Content-Security-Policy': 'script-src \'self\' https://openlibrary.org'
   })
 };
@@ -22,14 +22,26 @@ const httpOptions = {
 export class ServerService {
   configUrl = 'assets/config.json';
   openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
+  openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
+
   // OL9724026M
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getBookDetails(olId) {
     console.log('getting book details');
     return this.http.get(this.openLibUrl + olId)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+  }
+
+  quickSearch(searchString) {
+    console.log('getting book details');
+    return this.http.get(this.openLibTitleSearchUrl + searchString.replace(' ', '+'))
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -54,7 +66,7 @@ export class ServerService {
 
   getConfigResponse(): Observable<HttpResponse<Config>> {
     return this.http.get<Config>(
-      this.configUrl, { observe: 'response' });
+      this.configUrl, {observe: 'response'});
   }
 
   private handleError(error: HttpErrorResponse) {

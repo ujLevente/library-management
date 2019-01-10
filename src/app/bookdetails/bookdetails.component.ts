@@ -27,8 +27,7 @@ export class BookdetailsComponent implements OnInit {
   dimensions = '';
   pages = '';
   weight = '';
-  olID = 'OLID:OL9724026M';
-  data;
+  olID;
 
   constructor(public serverService: ServerService, route: ActivatedRoute) {
     console.log(route.snapshot.params['olId']);
@@ -72,6 +71,5 @@ export class BookdetailsComponent implements OnInit {
     this.dimensions = details[this.olID].details.physical_dimensions;
     this.pages = details[this.olID].details.number_of_pages;
     this.weight = details[this.olID].details.weight;
-
   }
 }

@@ -8,7 +8,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const appRoutes: Routes = [
@@ -18,7 +18,6 @@ const appRoutes: Routes = [
   }
 ];
 import { BookdetailsComponent } from './bookdetails/bookdetails.component';
-import {Routes} from '@angular/router';
 import {ServerService} from './server.service';
 
 const routes: Routes = [];
@@ -30,7 +29,7 @@ const routes: Routes = [];
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    BookdetailsComponent
+    BookdetailsComponent,
     SidebarComponent,
     WelcomePageComponent
   ],
