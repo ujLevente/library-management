@@ -1,5 +1,5 @@
 ASDSADSAD SIDEBAR
-<div class="sidebar" data-color="white" data-active-color="danger">
+<div class="sidebar" data-color="blue" data-active-color="danger">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
@@ -16,28 +16,29 @@ ASDSADSAD SIDEBAR
       </div> -->
     </a>
   </div>
-  <div class="sidebar-wrapper">
+  <div class="sidebar-wrapper " >
     <ul class="nav">
       <li [ngClass]="{active: selectedIndex === 1}" id="1" (click)="addClass(1)">
         <a routerLink="/index">
           <i class="nc-icon nc-book-bookmark"></i>
-          <div class="dropdown">
-            <a href="#" class=" dropdown-toggle" data-toggle="dropdown">
-              Browse
-              <b class="sidebar-wrapper"></b>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class="dropdown-header">Browse</li>
-              <a class="dropdown-item" href="#pk">Science</a>
-              <a class="dropdown-item" href="#pk">Biographies</a>
-              <a class="dropdown-item" href="#pk">Textbooks</a>
-              <a class="dropdown-item" href="#pk"> Sci-Fi</a>
-              <a class="dropdown-item" href="#pk"> Romance</a>
-              <a class="dropdown-item" href="#pk"> Fantasy</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#pk">More Subjects</a>
-            </ul>
-          </div>
+          <p>Browse</p>
+          <!--<div class="dropdown">-->
+            <!--<a href="#" class=" dropdown-toggle" data-toggle="dropdown">-->
+              <!--Browse-->
+              <!--<b class="sidebar-wrapper"></b>-->
+            <!--</a>-->
+            <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+              <!--<li class="dropdown-header">Browse</li>-->
+              <!--<a class="dropdown-item" href="#pk">Science</a>-->
+              <!--<a class="dropdown-item" href="#pk">Biographies</a>-->
+              <!--<a class="dropdown-item" href="#pk">Textbooks</a>-->
+              <!--<a class="dropdown-item" href="#pk"> Sci-Fi</a>-->
+              <!--<a class="dropdown-item" href="#pk"> Romance</a>-->
+              <!--<a class="dropdown-item" href="#pk"> Fantasy</a>-->
+              <!--<div class="dropdown-divider"></div>-->
+              <!--<a class="dropdown-item" href="#pk">More Subjects</a>-->
+            <!--</ul>-->
+          <!--</div>-->
         </a>
       </li>
       <li [ngClass]="{active: selectedIndex === 2}" id="2" (click)="addClass(2)">
