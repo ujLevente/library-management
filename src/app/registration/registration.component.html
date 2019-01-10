@@ -1,0 +1,47 @@
+<div>
+  <h1>Registration</h1>
+
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      Enter your email address:
+      <input type="text" formControlName="email" required>
+      <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+        <div *ngIf="messageForm.controls.email.errors.required">Please provide your email!</div>
+      </div>
+    </label>
+
+    <br>
+    <label>
+      Confirm your email address:
+      <input type="text" formControlName="email" required>
+      <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+        <div *ngIf="messageForm.controls.email.errors.required">Please provide your email!</div>
+      </div>
+    </label>
+
+    <br>
+    <label>
+      Choose a password:
+      <textarea formControlName="password" required></textarea>
+      <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+        <div *ngIf="messageForm.controls.password.errors.required">Choose a password (min. 8 character long)!</div>
+      </div>
+    </label>
+
+    <p>
+      <input type="submit" value="Registrate" class="cta">
+    </p>
+
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong>
+    <span>{{ messageForm.controls.email.value }}</span>
+
+    <strong>Message:</strong>
+    <span>{{ messageForm.controls.password.value }}</span>
+  </div>
+</div>
