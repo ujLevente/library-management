@@ -9,7 +9,7 @@ import { ServerService } from '../server.service';
 
 export class BookdetailsComponent implements OnInit {
 
-  contents: string;
+  contents: any;
 
   constructor(private serverService: ServerService) {
   }
@@ -19,8 +19,7 @@ export class BookdetailsComponent implements OnInit {
 
   onGetBookDetails() {
     console.log('onGetBookDetails');
-    this.serverService.getBookDetails().subscribe(results => this.contents = results);
-    console.log(this.contents);
+    this.serverService.getBookDetails().subscribe(results => console.log(results), error => console.log(error));
+    // console.log(this.contents);
   }
-
 }

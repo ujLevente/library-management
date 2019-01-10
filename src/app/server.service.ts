@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
@@ -10,25 +10,27 @@ export interface Config {
   textfile: string;
 }
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Content-Security-Policy': 'script-src \'self\' https://openlibrary.org'
+  })
+};
+
 @Injectable()
 export class ServerService {
   configUrl = 'assets/config.json';
-  openLibUrl = 'https://openlibrary.org/api/books?bibkeys=OLID:OL7850499M&jscmd=data';
+  openLibUrl = 'https://openlibrary.org/api/books?bibkeys=OLID:OL7850499M&jscmd=data&format=json';
+
 
   constructor(private http: HttpClient) { }
 
   getBookDetails() {
     return this.http.get(this.openLibUrl)
-      .map(
-        (response: Response) => {
-          const data = response.json();
-          return data;
-        }
-      )
-      .catch(
-        (error: Response) => {
-          return Observable.throw('Something went wrong');
-        }
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
       );
   }
 
@@ -67,7 +69,7 @@ export class ServerService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 
   makeIntentionalError() {
     return this.http.get('not/a/real/url')
