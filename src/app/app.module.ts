@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdvancesearchComponent } from './advancesearch/advancesearch.component';
 import {FormsModule} from "@angular/forms";
+import { SearchresultComponent } from './searchresult/searchresult.component';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {FormsModule} from "@angular/forms";
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
-    AdvancesearchComponent
+    AdvancesearchComponent,
+    SearchresultComponent,
+    ErrorpageComponent
   ],
   imports: [
     BrowserModule,
