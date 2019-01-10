@@ -12,12 +12,14 @@ export class RegistrationComponent implements OnInit {
   submitted = false;
   success = false;
   email : String;
+  emailConfirmation : String;
   password : String;
 
   constructor(private formBuilder: FormBuilder) {
     console.log('hey');
     this.messageForm = this.formBuilder.group({
       email: ['', Validators.required],
+      emailConfirmation: ['', Validators.required],
       password: ['', Validators.required, Validators.minLength(8)]
     });
   }

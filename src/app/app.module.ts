@@ -22,14 +22,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     AdvancesearchComponent,
     SearchresultComponent,
-    ErrorpageComponent
+    ErrorpageComponent,
     SidebarComponent,
     routingComponents
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],

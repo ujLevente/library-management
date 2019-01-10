@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AdvancesearchComponent} from "./advancesearch/advancesearch.component";
-import {SearchresultComponent} from "./searchresult/searchresult.component";
-import {ErrorpageComponent} from "./errorpage/errorpage.component";
+import { AdvancesearchComponent } from "./advancesearch/advancesearch.component";
+import { SearchresultComponent } from "./searchresult/searchresult.component";
+import { ErrorpageComponent } from "./errorpage/errorpage.component";
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'advancesearch', component: AdvancesearchComponent},
+  { path: 'search-result', component: SearchresultComponent},
+  { path: '**', component: ErrorpageComponent}
   ];
-const routes: Routes = [
-  {path: 'advancesearch', component: AdvancesearchComponent},
-  {path: 'search-result', component: SearchresultComponent},
-  {path: '**', component: ErrorpageComponent}
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
@@ -23,4 +21,8 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routingComponents = [LoginComponent, RegistrationComponent];
+export const routingComponents = [LoginComponent,
+                                  RegistrationComponent,
+                                  AdvancesearchComponent,
+                                  SearchresultComponent,
+                                  ErrorpageComponent];
