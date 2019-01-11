@@ -19,7 +19,6 @@ import {ServerService} from "./server.service";
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     NavbarComponent,
     FooterComponent,
     SidebarComponent,
