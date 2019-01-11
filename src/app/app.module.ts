@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -12,6 +12,7 @@ import { AdvancesearchComponent } from './advancesearch/advancesearch.component'
 import {FormsModule} from "@angular/forms";
 import { SearchresultComponent } from './searchresult/searchresult.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
 import {ServerService} from "./server.service";
 
@@ -23,15 +24,18 @@ import {ServerService} from "./server.service";
     FooterComponent,
     SidebarComponent,
     BookdetailsComponent,
-    SidebarComponent,
-    SidebarComponent,
     AdvancesearchComponent,
     SearchresultComponent,
-    ErrorpageComponent
+    ErrorpageComponent,
+    SidebarComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule
     FormsModule,
     HttpClientModule
   ],
