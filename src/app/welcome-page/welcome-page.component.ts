@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {WelcomePageServiceService} from "./service/welcome-page-service.service";
-import construct = Reflect.construct;
-import {SubjectDataModel} from "./model/subject-data-model";
+import {WelcomePageServiceService} from './service/welcome-page-service.service';
+import {SubjectDataModel} from './model/subject-data-model';
 
 @Component({
   selector: 'app-welcome-page',
@@ -19,7 +18,7 @@ export class WelcomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    let asd = new SubjectDataModel()
+    const asd = new SubjectDataModel();
   }
 
 

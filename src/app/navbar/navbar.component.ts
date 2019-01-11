@@ -10,12 +10,9 @@ import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 export class NavbarComponent implements OnInit {
 
   value;
-
-  constructor(public serverService: ServerService) {
-  }
   myGroup: FormGroup
 
-  constructor() {
+  constructor(public serverService: ServerService) {
     this.myGroup = new FormGroup({null: new FormControl()});
   }
 

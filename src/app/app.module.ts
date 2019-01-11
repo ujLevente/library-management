@@ -35,7 +35,7 @@ import {ServerService} from "./server.service";
     AppRoutingModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
