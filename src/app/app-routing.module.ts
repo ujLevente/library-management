@@ -6,10 +6,12 @@ import {SearchresultComponent} from './searchresult/searchresult.component';
 import {ErrorpageComponent} from './errorpage/errorpage.component';
 import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
 const routes: Routes = [
   {path: 'book/:olId', component: BookdetailsComponent},
   {path: 'advancesearch', component: AdvancesearchComponent},
+  {path: '', component: WelcomePageComponent},
   {path: 'search-result', component: SearchresultComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {BookSubjectApiService} from './service/book-subject-api.service';
-import {SubjectDataModel} from './model/subject-data-model';
+import {BookSubjectApiService} from "./service/book-subject-api.service";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-welcome-page',
@@ -11,15 +12,12 @@ import {SubjectDataModel} from './model/subject-data-model';
 export class WelcomePageComponent implements OnInit {
 
   private subjects: string[];
-  private pageData: SubjectDataModel[];
 
-  constructor(private service: BookSubjectApiService) {
+  constructor(private service: BookSubjectApiService, private http: HttpClient) {
     this.subjects = ['Classic', 'Romance', 'Kids', 'Thrillers', 'Textbooks', 'Sci-fi'];
   }
 
   ngOnInit() {
-    const asd = new SubjectDataModel();
   }
-
 
 }

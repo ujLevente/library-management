@@ -1,9 +1,6 @@
 import {BookDataModel} from "./book-data-model";
 
-export class SubjectDataModel {
-
-  private page: number;
-  subjectName: string;
-  books: BookDataModel[];
-
+export interface SubjectDataModel {
+  num_found;
+  docs: BookDataModel[];
 }

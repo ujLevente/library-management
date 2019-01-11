@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -16,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
 import {ServerService} from "./server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { BookSliderComponent } from './welcome-page/book-slider/book-slider.comp
     ErrorpageComponent,
     SidebarComponent,
     routingComponents,
+    WelcomePageComponent,
     BookSliderComponent
   ],
   imports: [
