@@ -15,6 +15,7 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
 import {ServerService} from "./server.service";
+import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ServerService} from "./server.service";
     SearchresultComponent,
     ErrorpageComponent,
     SidebarComponent,
-    routingComponents
+    routingComponents,
+    BookSliderComponent
   ],
   imports: [
     BrowserModule,

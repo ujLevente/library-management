@@ -5,7 +5,7 @@ import {SubjectDataModel} from "../model/subject-data-model";
 @Injectable({
   providedIn: 'root'
 })
-export class WelcomePageServiceService {
+export class BookSubjectApiService {
 
 
   constructor(private http: HttpClient) { }
