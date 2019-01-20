@@ -26,6 +26,7 @@
     "bootstrap": "^3.3.7",
     "bufferutil": "^4.0.1",
     "core-js": "^2.5.4",
+    "font-awesome": "^4.7.0",
     "http": "0.0.0",
     "http-browserify": "^1.7.0",
     "index.js": "0.0.3",
