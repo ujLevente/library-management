@@ -11,3 +11,8 @@
 .asd {
   width: 100px;
 }
+
+.book-content a {
+  width: inherit;
+  height: inherit;
+}
