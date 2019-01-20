@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SubjectDataModel} from "../model/subject-data-model";
 import {BookDataModel} from "../model/book-data-model";
+import {retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,7 @@ export class BookSubjectApiService {
 
     let books: BookDataModel[] = [];
 
-    this.http.get<SubjectDataModel>(searchQueryUrl).subscribe(
+    this.http.get(searchQueryUrl).pipe(retry(3)).subscribe(
       (res: SubjectDataModel) => res.docs.forEach(
         doc => books.push(this.optimizeBookData(doc))
       ),
