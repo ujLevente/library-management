@@ -1,0 +1,65 @@
+<div class="text-left">
+  <h2>Registration</h2>
+  <br>
+</div>
+
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <!--<h5 *ngIf="success">Your form is valid!</h5>-->
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form-group">
+          <label>
+            Enter your email address:
+            <input type="text" formControlName="email" required class="form-control border-input">
+            <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+              <div *ngIf="messageForm.controls.email.errors.required" class="invalid">Please provide your email!</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form-group">
+          <label>
+            Confirm your email address:
+            <input type="text" formControlName="emailConfirmation" required class="form-control border-input">
+            <div *ngIf="submitted && messageForm.controls.emailConfirmation.errors" class="error">
+              <div *ngIf="messageForm.controls.emailConfirmation.errors.required" class="invalid">Please confirm your email!</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-9">
+        <div class="form-group">
+          <label>
+            Choose a password:
+            <input formControlName="password" required class="form-control border-input"/>
+            <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+              <div *ngIf="messageForm.controls.password.errors.required" class="invalid">Choose a password (min. 8 character long)!</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      <button type="submit" class="cta btn btn-success">Registrate</button>
+    </p>
+
+  </form>
+
+  <!--<div *ngIf="submitted" class="results">-->
+    <!--<strong>Name:</strong>-->
+    <!--<span>{{ messageForm.controls.email.value }}</span>-->
+
+    <!--<strong>Message:</strong>-->
+    <!--<span>{{ messageForm.controls.password.value }}</span>-->
+  <!--</div>-->
+

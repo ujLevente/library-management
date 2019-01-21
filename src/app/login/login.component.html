@@ -1,0 +1,42 @@
+<div class="text-left">
+  <h2>Login</h2>
+  <br>
+</div>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+  <!--<h5 *ngIf="success">Your form is valid!</h5>-->
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>
+          Email:
+          <input type="text" formControlName="email" required class="form-control border-input">
+          <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+            <div *ngIf="messageForm.controls.email.errors.required" class="invalid">Email is invalid!</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <label>
+          Password:
+          <input type="text" formControlName="password" required class="form-control border-input">
+          <div *ngIf="submitted && messageForm.controls.password.errors" class="error">
+            <div *ngIf="messageForm.controls.password.errors.required" class="invalid">Password is invalid!</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <button type="submit" class="cta btn btn-success">Login</button>
+  </p>
+
+</form>

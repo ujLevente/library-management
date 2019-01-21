@@ -1,0 +1,13 @@
+.book-cover {
+  width: inherit;
+  height: inherit;
+}
+
+.book-content {
+  width: 145px;
+  height: 225px;
+  margin: auto;
+}
+.asd {
+  width: 100px;
+}
