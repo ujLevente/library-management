@@ -4,14 +4,26 @@
 }
 
 .book-content {
-  /*width: 145px;*/
-  /*height: 225px;*/
-  width: 100%;
-  height: 95%;
+  /*TODO make responsive*/
+  width: 145px;
+  height: 225px;
+  /*width: 100%;*/
+  /*height: 95%;*/
   margin: auto;
 }
-.asd {
-  width: 100px;
+
+.arrow {
+  color: #50a5ffd6;
+  font-size: 240%;
+}
+
+.arrow:hover {
+  color: #3b98fc;
+  cursor: pointer;
+}
+
+arrow:disabled {
+  color: #50a5ff4a;;
 }
 
 .book-content a {

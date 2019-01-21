@@ -31,7 +31,7 @@ export class BookSubjectApiService {
       return;
 
     // construct url
-    const numOfBooksDisplayed = 5;
+    const numOfBooksDisplayed = 6;
     let dataPaginationEnd = pageNum * numOfBooksDisplayed;
     let dataPaginationStart = dataPaginationEnd - numOfBooksDisplayed;
     let searchQueryUrl = `${this.baseUrl}subject=${subject}&limit=${dataPaginationEnd}&offset=${dataPaginationStart}`;
