@@ -11,7 +11,7 @@ import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 const routes: Routes = [
   {path: 'book/:olId', component: BookdetailsComponent},
   {path: 'advancesearch', component: AdvancesearchComponent},
-  {path: '', component: WelcomePageComponent},
+  {path: 'index', component: WelcomePageComponent},
   {path: 'search-result', component: SearchresultComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},

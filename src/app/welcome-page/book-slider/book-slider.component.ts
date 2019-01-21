@@ -23,7 +23,10 @@ export class BookSliderComponent implements OnInit {
 
 
   initBooks() {
-    this.books = this.service.getBooksBySubjectAndPageNumber(this.subject, this.pageNumber);
+    this.service.getBooksBySubjectAndPageNumber(this.subject, this.pageNumber).subscribe(
+      res => this.books = res,
+      error1 => alert("something went wrong")
+    );
   }
 
 }
