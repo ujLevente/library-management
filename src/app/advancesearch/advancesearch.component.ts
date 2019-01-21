@@ -32,30 +32,5 @@ export class AdvancesearchComponent implements OnInit {
 
   }
 
-  // getKeyWords(): KeyWords {
-  //   keyWords: new KeyWords (
-  //     this.title, this.author, this.isbn, this.subject, this.place, this.person, this.publisher)
-  // }
-
-}
-
-export class KeyWords {
-  // title: string;
-  // author: string;
-  // isbn: string;
-  // subject: string;
-  // place: string;
-  // person: string;
-  // publisher: string;
-  //
-  // constructor(
-  //   title: string;
-  // author: string;
-  // isbn: string;
-  // subject: string;
-  // place: string;
-  // person: string;
-  // publisher: string;
-  // ) {}
 }
 
