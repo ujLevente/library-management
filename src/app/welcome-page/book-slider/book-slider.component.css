@@ -30,3 +30,12 @@ arrow:disabled {
   width: inherit;
   height: inherit;
 }
+
+.info-btn {
+  width: inherit;
+}
+
+section {
+  background-color: beige;
+  padding-top: 14px;
+}

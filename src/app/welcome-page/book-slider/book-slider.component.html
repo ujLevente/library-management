@@ -14,14 +14,18 @@
               <div class="row align-items-center">
 
                 <div class="col-0">
-                  <span class="fas fa-chevron-circle-left arrow"></span>
+                  <i class="fas fa-chevron-circle-left arrow"></i>
                 </div>
 
                 <div *ngFor="let book of books" class="col">
                   <div class="book-content">
-                    <a href="#"><img class="book-cover" src="{{ book.cover_i }}"></a>
-                    <!--<h5>{{ book.title }}</h5>-->
+                    <a href="#">
+                      <img class="book-cover"
+                           title="{{book.author_name + ': ' + book.title }}"
+                           src="{{ book.cover_i }}">
+                    </a>
                   </div>
+                  <a class="info-btn" href="#"><button type="button" class="btn btn-info info-btn">Info</button></a>
                 </div>
 
                 <div class="col-0">
