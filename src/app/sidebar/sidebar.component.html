@@ -7,37 +7,37 @@
   </div>
   <div class="sidebar-wrapper " >
     <ul class="nav">
-      <li [ngClass]="{active: selectedIndex === 1}" id="1" (click)="addClass(1)">
+      <li routerLinkActive="active">
         <a routerLink="/index">
           <i class="nc-icon nc-book-bookmark"></i>
           <p>Browse</p>
         </a>
       </li>
-      <li [ngClass]="{active: selectedIndex === 2}" id="2" (click)="addClass(2)">
+      <li routerLinkActive="active">
         <a routerLink="/wish-list">
           <i class="nc-icon nc-favourite-28"></i>
           <p>My Wish List</p>
         </a>
       </li>
-      <li [ngClass]="{active: selectedIndex === 3}" id="3" (click)="addClass(3)">
+      <li routerLinkActive="active">
         <a routerLink="/favorite-book">
           <i class="nc-icon nc-satisfied"></i>
           <p>My Favorite Books</p>
         </a>
       </li>
-      <li [ngClass]="{active: selectedIndex === 4}" id="4" (click)="addClass(4)">
+      <li routerLinkActive="active">
         <a routerLink="/rented-book">
           <i class="nc-icon nc-calendar-60"></i>
           <p>My Rented Books</p>
         </a>
       </li>
-      <li [ngClass]="{active: selectedIndex === 5}" id="5" (click)="addClass(5)">
+      <li routerLinkActive="active">
         <a routerLink="/advance-booking">
           <i class="nc-icon nc-tile-56"></i>
           <p>My Advance Booking</p>
         </a>
       </li>
-      <li [ngClass]="{active: selectedIndex === 6}" id="6" (click)="addClass(6)">
+      <li routerLinkActive="active">
         <a routerLink="/user">
           <i class="nc-icon nc-single-02"></i>
           <p>User Profile</p>
