@@ -14,7 +14,9 @@
               <div class="row align-items-center">
 
                 <div class="col-0">
-                  <i (click)="scroll(backward)" class="fas fa-chevron-circle-left arrow"></i>
+                  <i (click)="scroll(backward)"
+                     ngClass="{{ pageNumber > 0 ? 'arrow' : 'arrow-disabled'}}"
+                     class="fas fa-chevron-circle-left"></i>
                 </div>
 
                 <div *ngFor="let book of books" class="col">
@@ -35,7 +37,9 @@
                 </div>
 
                 <div class="col-0">
-                  <i (click)="scroll(forward)" class="fas fa-chevron-circle-right arrow"></i>
+                  <i (click)="scroll(forward)"
+                     ngClass="{{ pageNumber < maxPageNumber ? 'arrow' : 'arrow-disabled'}}"
+                     class="fas fa-chevron-circle-right"></i>
                 </div>
 
               </div>

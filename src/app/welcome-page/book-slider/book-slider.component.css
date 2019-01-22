@@ -22,8 +22,9 @@
   cursor: pointer;
 }
 
-arrow:disabled {
-  color: #50a5ff4a;;
+.arrow-disabled {
+  color: #50a5ff4a;
+  font-size: 240%;
 }
 
 .book-content a {

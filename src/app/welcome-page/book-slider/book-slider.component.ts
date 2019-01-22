@@ -12,6 +12,7 @@ export class BookSliderComponent implements OnInit {
   private pageNumber: number;
   @Input() private subject: string;
   private books: BookDataModel[];
+  private maxPageNumber = 100;
   private forward: number = 1;
   private backward: number = -1;
 
@@ -28,6 +29,7 @@ export class BookSliderComponent implements OnInit {
   }
 
   scroll(direction) {
+    if (this.pageNumber == this.maxPageNumber || this.pageNumber == 0) return;
     this.pageNumber += direction;
     this.setBooks();
   }
