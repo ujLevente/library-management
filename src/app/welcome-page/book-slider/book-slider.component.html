@@ -25,6 +25,10 @@
                            src="{{ book.cover_i }}">
                     </a>
                   </div>
+                  <a title="{{book.author_name + ': ' + book.title }}"
+                     href="/book/{{ book.cover_edition_key }}">
+                    {{ formatText(book.title) }}
+                  </a>
                   <a class="info-btn" href="/book/{{ book.cover_edition_key }}">
                     <button type="button" class="btn btn-info info-btn">Info</button>
                   </a>

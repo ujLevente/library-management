@@ -38,4 +38,8 @@ export class BookSliderComponent implements OnInit {
     );
   }
 
+  formatText(str: string) {
+    let reducedCharacterLength = 17;
+    return str.length > reducedCharacterLength ? str.slice(0, reducedCharacterLength) + "..." : str;
+  }
 }
