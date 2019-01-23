@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BookDataModel} from "../../model/book-data-model";
+import {BookDataModel} from "../../shared/model/book-data-model";
 import {map, retry} from "rxjs/operators";
 import {Observable} from "rxjs";
-import {ServerService} from "../../server.service";
+import {ServerService} from "../../shared/service/server.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,9 @@ export class BookSubjectApiService {
 
     const numOfBooksDisplayed = 6;
     let offset = pageNum * numOfBooksDisplayed;
-    let searchQueryUrl = `${this.baseUrl}subject=${subject}&limit=${numOfBooksDisplayed}&offset=${offset}`;
+    let searchQueryUrl = `${this.baseUrl}subject=${subject}`;
 
-    return  this.sharedService.getBooksByQuery(searchQueryUrl);
+    return  this.sharedService.getBooksByQuery(searchQueryUrl, numOfBooksDisplayed, offset);
   }
 
 }

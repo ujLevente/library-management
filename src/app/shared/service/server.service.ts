@@ -4,7 +4,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
-import {BookDataModel} from "./model/book-data-model";
+import {BookDataModel} from "../model/book-data-model";
 
 
 const httpOptions = {
@@ -16,9 +16,9 @@ const httpOptions = {
 
 @Injectable()
 export class ServerService {
-  configUrl = 'assets/config.json';
-  openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
-  openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
+  quickSearchString: string;
+  private openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
+  private openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
 
   // OL9724026M
 
@@ -59,8 +59,8 @@ export class ServerService {
       'Something bad happened; please try again later.');
   }
 
-  getBooksByQuery(searchQueryUrl: string): Observable<BookDataModel[]> {
-
+  getBooksByQuery(searchQueryUrl: string, limit: number, offset: number): Observable<BookDataModel[]> {
+    searchQueryUrl += `&limit=${limit}&offset=${offset}`;
     return this.http.get(searchQueryUrl)
       .pipe(
         retry(3),
