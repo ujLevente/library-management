@@ -11,15 +11,37 @@
         <div>
           <section>
             <div class="container">
-              <div class="row">
-                <div class="asd"></div>
+              <div class="row align-items-center">
+
+                <div class="col-0">
+                  <i (click)="scroll(backward)"
+                     ngClass="{{ pageNumber > 0 ? 'arrow' : 'arrow-disabled'}}"
+                     class="fas fa-chevron-circle-left"></i>
+                </div>
+
                 <div *ngFor="let book of books" class="col">
                   <div class="book-content">
-                    <a href="#"><img class="book-cover" src="{{ book.cover_i }}"></a>
-                    <!--<h5>{{ book.title }}</h5>-->
+                    <a href="/book/{{ book.cover_edition_key }}">
+                      <img class="book-cover"
+                           title="{{book.author_name + ': ' + book.title }}"
+                           src="{{ book.cover_i }}">
+                    </a>
                   </div>
+                  <a title="{{book.author_name + ': ' + book.title }}"
+                     href="/book/{{ book.cover_edition_key }}">
+                    {{ formatText(book.title) }}
+                  </a>
+                  <a class="info-btn" href="/book/{{ book.cover_edition_key }}">
+                    <button type="button" class="btn btn-info info-btn">Info</button>
+                  </a>
                 </div>
-                <div class="asd"></div>
+
+                <div class="col-0">
+                  <i (click)="scroll(forward)"
+                     ngClass="{{ pageNumber < maxPageNumber ? 'arrow' : 'arrow-disabled'}}"
+                     class="fas fa-chevron-circle-right"></i>
+                </div>
+
               </div>
             </div>
           </section>

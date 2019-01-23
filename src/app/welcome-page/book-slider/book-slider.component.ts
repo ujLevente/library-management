@@ -12,21 +12,36 @@ export class BookSliderComponent implements OnInit {
   private pageNumber: number;
   @Input() private subject: string;
   private books: BookDataModel[];
-
+  private maxPageNumber = 100;
+  private forward: number = 1;
+  private backward: number = -1;
 
   constructor(private service: BookSubjectApiService) { }
 
   ngOnInit() {
-    this.pageNumber = 1;
+    this.pageNumber = 0;
     this.initBooks();
   }
 
 
   initBooks() {
+    this.setBooks();
+  }
+
+  scroll(direction) {
+    if (this.pageNumber == this.maxPageNumber || this.pageNumber == 0) return;
+    this.pageNumber += direction;
+    this.setBooks();
+  }
+
+  setBooks() {
     this.service.getBooksBySubjectAndPageNumber(this.subject, this.pageNumber).subscribe(
-      res => this.books = res,
-      error1 => alert("something went wrong")
+      res => this.books = res
     );
   }
 
+  formatText(str: string) {
+    let reducedCharacterLength = 17;
+    return str.length > reducedCharacterLength ? str.slice(0, reducedCharacterLength) + "..." : str;
+  }
 }
