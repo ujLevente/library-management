@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BookDataModel} from "../model/book-data-model";
+import {BookDataModel} from "../../model/book-data-model";
 import {map, retry} from "rxjs/operators";
 import {Observable} from "rxjs";
 

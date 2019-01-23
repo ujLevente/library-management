@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BookDataModel} from "../model/book-data-model";
+import {BookDataModel} from "../../model/book-data-model";
 import {BookSubjectApiService} from "../service/book-subject-api.service";
 
 @Component({
