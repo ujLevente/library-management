@@ -1,14 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable, throwError} from 'rxjs';
-import {catchError, retry} from 'rxjs/operators';
-
-export interface Config {
-  heroesUrl: string;
-  textfile: string;
-}
+import {catchError, map, retry} from 'rxjs/operators';
+import {BookDataModel} from "./model/book-data-model";
 
 
 const httpOptions = {
@@ -47,27 +43,6 @@ export class ServerService {
       );
   }
 
-  getConfig_1() {
-    return this.http.get(this.configUrl);
-  }
-
-  getConfig_2() {
-    // now returns an Observable of Config
-    return this.http.get<Config>(this.configUrl);
-  }
-
-  getConfig_3() {
-    return this.http.get<Config>(this.configUrl)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  getConfigResponse(): Observable<HttpResponse<Config>> {
-    return this.http.get<Config>(
-      this.configUrl, {observe: 'response'});
-  }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -84,10 +59,34 @@ export class ServerService {
       'Something bad happened; please try again later.');
   }
 
-  makeIntentionalError() {
-    return this.http.get('not/a/real/url')
+  getBooksByQuery(searchQueryUrl: string): Observable<BookDataModel[]> {
+
+    return this.http.get(searchQueryUrl)
       .pipe(
+        retry(3),
+        map(res  => {
+          let books: BookDataModel[] = res['docs'];
+          books = books.map(this.optimizeBookData);
+
+          return books;
+        }),
         catchError(this.handleError)
-      );
+      )
   }
+
+  private optimizeBookData(data: BookDataModel): BookDataModel {
+
+    let book: BookDataModel = {
+      cover_edition_key: data.cover_edition_key,
+      title: data.title,
+      author_name: data.author_name,
+
+      cover_i: data.cover_i == null ?
+        "/assets/img/cover-missing.jpg" :
+        `http://covers.openlibrary.org/b/id/${data.cover_i}-L.jpg`
+    };
+
+    return book;
+  }
+
 }

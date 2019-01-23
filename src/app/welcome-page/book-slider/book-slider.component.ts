@@ -30,6 +30,10 @@ export class BookSliderComponent implements OnInit {
 
   scroll(direction) {
     this.pageNumber += direction;
+    if (this.pageNumber < 0) {
+      this.pageNumber = 0;
+      return;
+    }
     this.setBooks();
   }
 
