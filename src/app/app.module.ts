@@ -16,6 +16,7 @@ import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
 import {ServerService} from "./server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import { SerachResultComponent } from './serach-result/serach-result.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
     SidebarComponent,
     routingComponents,
     WelcomePageComponent,
-    BookSliderComponent
+    BookSliderComponent,
+    SerachResultComponent
   ],
   imports: [
     BrowserModule,

@@ -9,20 +9,19 @@ import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 
-  value;
-  myGroup: FormGroup
+  searchString: string;
 
   constructor(public serverService: ServerService) {
-    this.myGroup = new FormGroup({null: new FormControl()});
   }
 
   ngOnInit() {
   }
 
-  onQuickSearch() {
-    const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-    this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
-
+  onQuickSearch(event) {
+    if (event.key == "Enter") {
+      const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
+      this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
+    }
   }
 
   qSearchResult(results) {
