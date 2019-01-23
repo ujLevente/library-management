@@ -29,7 +29,6 @@ export class BookSliderComponent implements OnInit {
   }
 
   scroll(direction) {
-    if (this.pageNumber == this.maxPageNumber || this.pageNumber == 0) return;
     this.pageNumber += direction;
     this.setBooks();
   }
