@@ -3,5 +3,5 @@ export interface BookDataModel {
   cover_i: string;
   title: string;
   author_name: string;
-
+  subject: string[];
 }

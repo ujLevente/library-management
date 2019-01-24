@@ -9,13 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdvancesearchComponent } from './advancesearch/advancesearch.component';
 import {FormsModule} from "@angular/forms";
-import { SearchresultComponent } from './searchresult/searchresult.component';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
-import {ServerService} from "./server.service";
+import {ServerService} from "./shared/service/server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +25,12 @@ import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
     SidebarComponent,
     BookdetailsComponent,
     AdvancesearchComponent,
-    SearchresultComponent,
     ErrorpageComponent,
     SidebarComponent,
     routingComponents,
     WelcomePageComponent,
-    BookSliderComponent
+    BookSliderComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

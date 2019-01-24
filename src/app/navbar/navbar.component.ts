@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServerService} from '../server.service';
+import {ServerService} from '../shared/service/server.service';
 import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -9,24 +9,20 @@ import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 
-  value;
-  myGroup: FormGroup
+  searchString: string;
 
   constructor(public serverService: ServerService) {
-    this.myGroup = new FormGroup({null: new FormControl()});
   }
 
   ngOnInit() {
   }
 
-  onQuickSearch() {
-    const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-    this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
-
+  onQuickSearch(event) {
+    if (event.key == "Enter") {
+      const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
+      this.serverService.quickSearchString = inputValue;
+      this.serverService.redirectToSearchResults();
+    }
   }
 
-  qSearchResult(results) {
-    console.log(results.docs[0].edition_key[0]);
-    window.location.href = '/book/' + results.docs[0].cover_edition_key;
-  }
 }

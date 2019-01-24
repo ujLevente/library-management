@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BookDataModel} from "../model/book-data-model";
+import {BookDataModel} from "../../shared/model/book-data-model";
 import {BookSubjectApiService} from "../service/book-subject-api.service";
 
 @Component({
@@ -30,6 +30,10 @@ export class BookSliderComponent implements OnInit {
 
   scroll(direction) {
     this.pageNumber += direction;
+    if (this.pageNumber < 0) {
+      this.pageNumber = 0;
+      return;
+    }
     this.setBooks();
   }
 
