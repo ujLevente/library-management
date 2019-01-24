@@ -45,13 +45,17 @@ export class BookdetailsComponent implements OnInit {
   onAddToWishList() {
     if (this.onwishlist) {
       const remove = this.serverService.removeFromWishList(this.olID).subscribe(event => {
+        console.log('remove success: ' + event['success']);
         if (event['success'] === true) {
           this.onwishlist = false;
         }
       });
     } else {
       const add = this.serverService.addToWishList(this.olID).subscribe(event => {
-        this.onWishListget();
+        console.log('add success: ' + event['success']);
+        if (event['success'] === true) {
+          this.onwishlist = true;
+        }
       });
     }
   }
