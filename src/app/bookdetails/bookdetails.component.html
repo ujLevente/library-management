@@ -51,7 +51,13 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12 pr-1">
-            <button type="button" class="btn btn-primary btn-round"><i class="far fa-star"></i> Add to wishlist
+            <button [ngModel]="wishListText" type="button" class="btn btn-primary btn-round" (click)="onAddToWishList()">
+              <span *ngIf="onwishlist" style="color: yellow;">
+              <i class="fas fa-star"></i>
+              </span>
+              <span *ngIf="!onwishlist">
+              <i class="far fa-star"></i>
+              </span>
             </button>
             <button type="button" class="btn btn-primary btn-round">Buy</button>
           </div>

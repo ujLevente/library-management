@@ -28,6 +28,8 @@ export class BookdetailsComponent implements OnInit {
   pages = '';
   weight = '';
   olID;
+  onwishlist = false;
+  wishListText = 'Add to you wishlist!';
 
   constructor(public serverService: ServerService, route: ActivatedRoute) {
     console.log(route.snapshot.params['olId']);
@@ -40,11 +42,37 @@ export class BookdetailsComponent implements OnInit {
     this.onGetBookDetails();
   }
 
+  onAddToWishList() {
+    if (this.onwishlist) {
+      const remove = this.serverService.removeFromWishList(this.olID).subscribe(event => {
+        if (event['success'] === true) {
+          this.onwishlist = false;
+        }
+      });
+    } else {
+      const add = this.serverService.addToWishList(this.olID).subscribe(event => {
+        this.onWishListget();
+      });
+    }
+  }
+
   onGetBookDetails() {
     console.log('onGetBookDetails');
     this.serverService.getBookDetails(this.olID).subscribe(results => this.asd(results));
-    // console.log(this.bookDetails['title']);
-    // this.title = this.bookDetails[this.olID];
+    this.onWishListget();
+
+  }
+
+  onWishListget() {
+    const onWishlist = this.serverService.isBookOnWishlist(this.olID).subscribe(event => {
+      console.log('isBookOnWishlist: ' + event);
+      const onWishlistEvent = event['onwishlist'];
+      console.log('onWishlistEvent:' + onWishlistEvent);
+      if (onWishlistEvent === true) {
+        this.onwishlist = true;
+        this.wishListText = 'On your wishlist';
+      }
+    });
   }
 
   asd(details) {

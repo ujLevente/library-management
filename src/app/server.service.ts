@@ -47,6 +47,57 @@ export class ServerService {
       );
   }
 
+  isBookOnWishlist(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/onwishlist', postData, corsheader);
+  }
+
+  addToWishList(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/add', postData, corsheader);
+  }
+
+  removeFromWishList(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/remove', postData, corsheader);
+  }
+
   getConfig_1() {
     return this.http.get(this.configUrl);
   }
