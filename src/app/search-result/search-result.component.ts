@@ -10,14 +10,15 @@ import {ServerService} from "../shared/service/server.service";
 export class SearchResultComponent implements OnInit {
 
   private searchResult: BookDataModel[];
-
+  private baseUrl = "http://openlibrary.org/search.json?";
   constructor(private sharedService: ServerService) { }
 
   ngOnInit() {
-    this.sharedService.getBooksByQuery("http://openlibrary.org/search.json?title=ring").subscribe(
-      res => this.searchResult = res
-    )
+    let searchUrl = `${this.baseUrl}title=${this.sharedService.quickSearchString}`;
+    this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
+      res => {this.searchResult = res;
+        alert(res[0].cover_edition_key);}
+      )
   }
-
 
 }

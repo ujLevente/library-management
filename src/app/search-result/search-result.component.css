@@ -1,0 +1,15 @@
+.cover {
+  width: 70px;
+}
+
+.list-table {
+  margin: auto;
+}
+
+tr {
+  text-align: center;
+}
+
+td, th {
+  width: 30px;
+}

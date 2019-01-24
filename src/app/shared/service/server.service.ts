@@ -5,6 +5,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
 import {BookDataModel} from "../model/book-data-model";
+import {Router} from "@angular/router";
 
 
 const httpOptions = {
@@ -22,21 +23,11 @@ export class ServerService {
 
   // OL9724026M
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   getBookDetails(olId) {
-    console.log('getting book details');
     return this.http.get(this.openLibUrl + olId)
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
-  }
-
-  quickSearch(searchString) {
-    console.log('getting book details');
-    return this.http.get(this.openLibTitleSearchUrl + searchString.replace(' ', '+'))
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -70,17 +61,16 @@ export class ServerService {
 
           return books;
         }),
-        catchError(this.handleError)
+        // catchError(this.handleError)
       )
   }
 
   private optimizeBookData(data: BookDataModel): BookDataModel {
-
     let book: BookDataModel = {
       cover_edition_key: data.cover_edition_key,
       title: data.title,
       author_name: data.author_name,
-
+      subject: data.subject == null ? [""] : data.subject.slice(0, 3),
       cover_i: data.cover_i == null ?
         "/assets/img/cover-missing.jpg" :
         `http://covers.openlibrary.org/b/id/${data.cover_i}-L.jpg`
@@ -89,4 +79,7 @@ export class ServerService {
     return book;
   }
 
+  redirectToSearchResults() {
+    this.router.navigate(['/search']);
+  }
 }

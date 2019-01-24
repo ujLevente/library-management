@@ -20,12 +20,9 @@ export class NavbarComponent implements OnInit {
   onQuickSearch(event) {
     if (event.key == "Enter") {
       const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-      this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
+      this.serverService.quickSearchString = inputValue;
+      this.serverService.redirectToSearchResults();
     }
   }
 
-  qSearchResult(results) {
-    console.log(results.docs[0].edition_key[0]);
-    window.location.href = '/book/' + results.docs[0].cover_edition_key;
-  }
 }
