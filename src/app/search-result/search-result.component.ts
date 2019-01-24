@@ -14,10 +14,13 @@ export class SearchResultComponent implements OnInit {
   constructor(private sharedService: ServerService) { }
 
   ngOnInit() {
+    this.search();
+  }
+
+  search() {
     let searchUrl = `${this.baseUrl}title=${this.sharedService.quickSearchString}`;
     this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
       res => this.searchResult = res
-      )
+    )
   }
-
 }
