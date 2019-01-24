@@ -30,6 +30,15 @@ export class ServerService {
   }
 
   getBookDetails(olId) {
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
     console.log('getting book details');
     return this.http.get(this.openLibUrl + olId)
       .pipe(
@@ -96,6 +105,22 @@ export class ServerService {
     const postData = new FormData();
     postData.append('OLID', olId);
     return this.http.post('http://localhost:8080/wishlist/remove', postData, corsheader);
+  }
+
+  getWishlist() {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+    const postData = new FormData();
+    postData.append('get', 'wishlist');
+    return this.http.post('http://localhost:8080/wishlist/getwishlist', postData, corsheader);
   }
 
   getConfig_1() {
