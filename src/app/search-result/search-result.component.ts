@@ -16,8 +16,7 @@ export class SearchResultComponent implements OnInit {
   ngOnInit() {
     let searchUrl = `${this.baseUrl}title=${this.sharedService.quickSearchString}`;
     this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
-      res => {this.searchResult = res;
-        alert(res[0].cover_edition_key);}
+      res => this.searchResult = res
       )
   }
 
