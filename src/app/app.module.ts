@@ -17,6 +17,12 @@ import {ServerService} from "./server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import { WishlistComponent } from './wishlist/wishlist.component';
+import {PmComponent} from './auth/pm/pm.component';
+import {AdminComponent} from './admin/admin.component';
+import {HomeComponent} from './home/home.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {UserComponent} from './user/user.component';
+import {LoginComponent} from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,14 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     routingComponents,
     WelcomePageComponent,
     BookSliderComponent,
-    WishlistComponent
+    WishlistComponent,
+  //  AUTH
+    LoginComponent,
+    UserComponent,
+    RegisterComponent,
+    HomeComponent,
+    AdminComponent,
+    PmComponent
   ],
   imports: [
     BrowserModule,
