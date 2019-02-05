@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ServerService} from '../server.service';
+// import {ServerService} from '../server.service';
+import {ServerService} from "../shared/service/server.service";
 import {Book} from '../book.model';
 
 @Component({

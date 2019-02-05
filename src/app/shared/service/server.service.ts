@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
 import {BookDataModel} from "../model/book-data-model";
 import {Router} from "@angular/router";
+import {Config} from "../../server.service";
 
 
 const httpOptions = {
@@ -18,6 +19,7 @@ const httpOptions = {
 @Injectable()
 export class ServerService {
   quickSearchString: string;
+  configUrl = 'assets/config.json';
   private openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
   private openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
 
@@ -26,7 +28,25 @@ export class ServerService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  // getBookDetails(olId) {
+  //   return this.http.get(this.openLibUrl + olId)
+  //     .pipe(
+  //       retry(3), // retry a failed request up to 3 times
+  //       catchError(this.handleError) // then handle the error
+  //     );
+  // }
+
   getBookDetails(olId) {
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    console.log('getting book details');
     return this.http.get(this.openLibUrl + olId)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -81,5 +101,102 @@ export class ServerService {
 
   redirectToSearchResults() {
     this.router.navigate(['/search']);
+  }
+
+  isBookOnWishlist(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/onwishlist', postData, corsheader);
+  }
+
+  addToWishList(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/add', postData, corsheader);
+  }
+
+  removeFromWishList(olId) {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
+    const postData = new FormData();
+    postData.append('OLID', olId);
+    return this.http.post('http://localhost:8080/wishlist/remove', postData, corsheader);
+  }
+
+  getWishlist() {
+    console.log('getting book is on wishlist');
+
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+    const postData = new FormData();
+    postData.append('get', 'wishlist');
+    return this.http.post('http://localhost:8080/wishlist/getwishlist', postData, corsheader);
+  }
+
+  // config etc..
+
+  getConfig_1() {
+    return this.http.get(this.configUrl);
+  }
+
+  getConfig_2() {
+    // now returns an Observable of Config
+    return this.http.get<Config>(this.configUrl);
+  }
+
+  getConfig_3() {
+    return this.http.get<Config>(this.configUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getConfigResponse(): Observable<HttpResponse<Config>> {
+    return this.http.get<Config>(
+      this.configUrl, {observe: 'response'});
+  }
+
+  makeIntentionalError() {
+    return this.http.get('not/a/real/url')
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 }
