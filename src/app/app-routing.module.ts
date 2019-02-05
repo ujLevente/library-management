@@ -7,6 +7,7 @@ import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import {SearchResultComponent} from "./search-result/search-result.component";
+import {WishlistComponent} from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {path: 'book/:olId', component: BookdetailsComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'index', component: WelcomePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
+  {path: 'wishlist', component: WishlistComponent},
   {path: '**', component: ErrorpageComponent}
 ];
 

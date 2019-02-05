@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <div class="card card-plain">
+    <div class="card-header">
+      <h4 class="card-title"> Table on Plain Background</h4>
+      <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class=" text-primary">
+          <tr><th>
+            Title
+          </th>
+            <th>
+              Author
+            </th>
+            <th>
+              Pages
+            </th>
+            <th >
+              Publisher
+            </th>
+            <th>Publish date</th>
+          </tr></thead>
+          <tbody>
+          <tr *ngFor="let book of bookList">
+            <td><a [routerLink]="['/book/' + book.olId]">{{book.title}}</a></td>
+            <td>{{book.author}}</td>
+            <td>{{book.pages}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.publishDate}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import {ServerService} from "./shared/service/server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import { SearchResultComponent } from './search-result/search-result.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,9 @@ import { SearchResultComponent } from './search-result/search-result.component';
     SidebarComponent,
     routingComponents,
     WelcomePageComponent,
+    SearchResultComponent,
     BookSliderComponent,
-    SearchResultComponent
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
