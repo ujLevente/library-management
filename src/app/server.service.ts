@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
-import {HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 import {Observable, throwError} from 'rxjs';
-import {catchError, map, retry} from 'rxjs/operators';
-import {BookDataModel} from "../model/book-data-model";
-import {Router} from "@angular/router";
-import {Config} from "../../server.service";
+import {catchError, retry} from 'rxjs/operators';
+
+export interface Config {
+  heroesUrl: string;
+  textfile: string;
+}
 
 
 const httpOptions = {
@@ -18,23 +20,14 @@ const httpOptions = {
 
 @Injectable()
 export class ServerService {
-  quickSearchString: string;
   configUrl = 'assets/config.json';
-  private openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
-  private openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
+  openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
+  openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
 
   // OL9724026M
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient) {
   }
-
-  // getBookDetails(olId) {
-  //   return this.http.get(this.openLibUrl + olId)
-  //     .pipe(
-  //       retry(3), // retry a failed request up to 3 times
-  //       catchError(this.handleError) // then handle the error
-  //     );
-  // }
 
   getBookDetails(olId) {
     // Adding CORS header
@@ -54,53 +47,13 @@ export class ServerService {
       );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  }
-
-  getBooksByQuery(searchQueryUrl: string, limit: number, offset: number): Observable<BookDataModel[]> {
-    searchQueryUrl += `&limit=${limit}&offset=${offset}`;
-    return this.http.get(searchQueryUrl)
+  quickSearch(searchString) {
+    console.log('getting book details');
+    return this.http.get(this.openLibTitleSearchUrl + searchString.replace(' ', '+'))
       .pipe(
-        retry(3),
-        map(res  => {
-          let books: BookDataModel[] = res['docs'];
-          books = books.map(this.optimizeBookData);
-
-          return books;
-        }),
-        // catchError(this.handleError)
-      )
-  }
-
-  private optimizeBookData(data: BookDataModel): BookDataModel {
-    let book: BookDataModel = {
-      cover_edition_key: data.cover_edition_key,
-      title: data.title,
-      author_name: data.author_name,
-      subject: data.subject == null ? [""] : data.subject.slice(0, 3),
-      cover_i: data.cover_i == null ?
-        "/assets/img/cover-missing.jpg" :
-        `http://covers.openlibrary.org/b/id/${data.cover_i}-L.jpg`
-    };
-
-    return book;
-  }
-
-  redirectToSearchResults() {
-    this.router.navigate(['/search']);
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
   }
 
   isBookOnWishlist(olId) {
@@ -170,8 +123,6 @@ export class ServerService {
     return this.http.post('http://localhost:8080/wishlist/getwishlist', postData, corsheader);
   }
 
-  // config etc..
-
   getConfig_1() {
     return this.http.get(this.configUrl);
   }
@@ -191,6 +142,22 @@ export class ServerService {
   getConfigResponse(): Observable<HttpResponse<Config>> {
     return this.http.get<Config>(
       this.configUrl, {observe: 'response'});
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 
   makeIntentionalError() {
