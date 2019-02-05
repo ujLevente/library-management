@@ -14,7 +14,12 @@ import {PmComponent} from './auth/pm/pm.component';
 import {UserComponent} from './user/user.component';
 import {HomeComponent} from './home/home.component';
 
+import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
+import {RoleGuardService as RoleGuard} from './auth/role-guard.service';
+import {NopermissionComponent} from './auth/nopermission/nopermission.component';
+
 const routes: Routes = [
+  {path: 'nopermission', component: NopermissionComponent},
   {path: 'book/:olId', component: BookdetailsComponent},
   {path: 'advancesearch', component: AdvancesearchComponent},
   {path: 'index', component: WelcomePageComponent},
@@ -30,7 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserComponent
+    component: UserComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pm',
@@ -38,7 +44,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'ROLE_ADMIN'
+    },
   },
   {
     path: 'auth/login',
