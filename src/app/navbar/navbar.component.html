@@ -19,7 +19,7 @@
         <div class="input-group no-border">
           <input (keypress)="onQuickSearch($event)" id="qsinput" type="text" class="form-control" placeholder="Search...">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div (click)="onQuickSearch('clicked on search')" id="quick-search-btn" class="input-group-text">
               <i class="nc-icon nc-zoom-split"></i>
             </div>
           </div>

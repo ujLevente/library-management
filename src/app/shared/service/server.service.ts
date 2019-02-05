@@ -28,14 +28,6 @@ export class ServerService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  // getBookDetails(olId) {
-  //   return this.http.get(this.openLibUrl + olId)
-  //     .pipe(
-  //       retry(3), // retry a failed request up to 3 times
-  //       catchError(this.handleError) // then handle the error
-  //     );
-  // }
-
   getBookDetails(olId) {
     // Adding CORS header
     const corsheader = {

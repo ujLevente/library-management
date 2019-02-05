@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onQuickSearch(event) {
-    if (event.key == "Enter") {
+    if (event.key == "Enter" || event == "clicked on search") {
       const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
       this.serverService.quickSearchString = inputValue;
       this.serverService.redirectToSearchResults();
