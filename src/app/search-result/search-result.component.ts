@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BookDataModel} from "../shared/model/book-data-model";
 import {ServerService} from "../shared/service/server.service";
 import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css']
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription[] = [];
   private searchResult: BookDataModel[];
   private searchBy: string;
   private searchString: string;
   private baseUrl = "http://openlibrary.org/search.json?";
   constructor(private sharedService: ServerService, route: ActivatedRoute) {
-    route.queryParams.subscribe(params => {
-      this.searchString = params['q'];
-      this.searchBy = params['searchBy'];
-    });
+    this.subscriptions.push(
+      route.queryParams.subscribe(params => {
+        this.searchString = params['q'];
+        this.searchBy = params['searchBy'];
+      })
+    );
   }
 
   ngOnInit() {
@@ -27,9 +31,15 @@ export class SearchResultComponent implements OnInit {
 
   search() {
     let searchUrl = `${this.baseUrl}${this.searchBy}=${this.searchString}`;
-    console.log(searchUrl);
-    this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
+
+    this.subscriptions.push(
+      this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
       res => this.searchResult = res
-    )
+      )
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }
