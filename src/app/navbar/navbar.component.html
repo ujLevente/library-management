@@ -58,11 +58,14 @@
             </p>
           </a>
         </li>
-        <li>
+        <li *ngIf="!authority">
           <button routerLink="/registration" routerLinkActive="active" type="button" class="btn btn-primary btn-round">Registration</button>
         </li>
-        <li>
+        <li *ngIf="!authority">
           <button routerLink="/login" routerLinkActive="active" type="button" class="btn btn-primary btn-round">Login</button>
+        </li>
+        <li *ngIf="authority">
+          <button class="btn btn-primary btn-round" (click)="logout()">logout</button>
         </li>
 
       </ul>
