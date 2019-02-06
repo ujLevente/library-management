@@ -5,7 +5,6 @@ import {BookdetailsComponent} from './bookdetails/bookdetails.component';
 import {SearchresultComponent} from './searchresult/searchresult.component';
 import {ErrorpageComponent} from './errorpage/errorpage.component';
 import {LoginComponent} from './auth/login/login.component';
-import {RegistrationComponent} from './registration/registration.component';
 import {WelcomePageComponent} from './welcome-page/welcome-page.component';
 import {WishlistComponent} from './wishlist/wishlist.component';
 import {RegisterComponent} from './auth/register/register.component';
@@ -25,7 +24,7 @@ const routes: Routes = [
   {path: 'index', component: WelcomePageComponent},
   {path: 'search-result', component: SearchresultComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'registration', component: RegistrationComponent},
+  {path: 'registration', component: RegisterComponent},
   {path: 'wishlist', component: WishlistComponent},
   // {path: '**', component: ErrorpageComponent},
 //   AUTH
@@ -74,9 +73,8 @@ export class AppRoutingModule {
 }
 
 export const routingComponents = [LoginComponent,
-  RegistrationComponent,
   AdvancesearchComponent,
   SearchresultComponent,
   ErrorpageComponent,
-  RegistrationComponent,
+  RegisterComponent,
   LoginComponent];
