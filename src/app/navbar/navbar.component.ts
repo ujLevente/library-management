@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   myGroup: FormGroup;
   private authority: string;
   private roles: string[];
-  searchString: string;
 
   constructor(public serverService: ServerService, private tokenStorage: TokenStorageService) {
     this.myGroup = new FormGroup({null: new FormControl()});
@@ -40,8 +39,7 @@ export class NavbarComponent implements OnInit {
   onQuickSearch(event) {
     if (event.key == "Enter" || event == "clicked on search") {
       const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-      this.serverService.quickSearchString = inputValue;
-      this.serverService.redirectToSearchResults();
+      this.serverService.redirectToSearchResults('title', inputValue);
     }
   }
 

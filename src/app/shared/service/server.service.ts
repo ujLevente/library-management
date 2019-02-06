@@ -18,7 +18,6 @@ const httpOptions = {
 
 @Injectable()
 export class ServerService {
-  quickSearchString: string;
   configUrl = 'assets/config.json';
   private openLibUrl = 'https://openlibrary.org/api/books?jscmd=details&format=json&bibkeys=';
   private openLibTitleSearchUrl = 'http://openlibrary.org/search.json?title=';
@@ -91,8 +90,8 @@ export class ServerService {
     return book;
   }
 
-  redirectToSearchResults() {
-    this.router.navigate(['/search']);
+  redirectToSearchResults(searchBy: string, searchString: string) {
+    this.router.navigate(['/search'], {queryParams: { searchBy: searchBy, q: searchString }});
   }
 
   isBookOnWishlist(olId) {
