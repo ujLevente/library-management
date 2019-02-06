@@ -85,7 +85,7 @@ export class ServerService {
       subject: data.subject == null ? [""] : data.subject.slice(0, 3),
       cover_i: data.cover_i == null ?
         "/assets/img/cover-missing.jpg" :
-        `http://covers.openlibrary.org/b/id/${data.cover_i}-L.jpg`
+        `http://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg`
     };
 
     return book;

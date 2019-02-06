@@ -48,7 +48,8 @@ import { NopermissionComponent } from './auth/nopermission/nopermission.componen
     RegisterComponent,
     HomeComponent,
     AdminComponent,
-    PmComponent
+    PmComponent,
+    NopermissionComponent
   ],
   imports: [
     BrowserModule,
