@@ -91,7 +91,6 @@ export class ServerService {
   }
 
   redirectToSearchResults(queryParameters) {
-    console.log(queryParameters);
     this.router.navigate(['/search'], { queryParams: queryParameters });
   }
 
