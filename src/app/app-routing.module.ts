@@ -4,9 +4,9 @@ import {Routes, RouterModule} from '@angular/router';
 import {BookdetailsComponent} from './bookdetails/bookdetails.component';
 import {ErrorpageComponent} from './errorpage/errorpage.component';
 import {LoginComponent} from './auth/login/login.component';
-import {RegistrationComponent} from './registration/registration.component';
-import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
-import {SearchResultComponent} from "./search-result/search-result.component";
+// import {RegistrationComponent} from './registration/registration.component';
+import {WelcomePageComponent} from './welcome-page/welcome-page.component';
+import {SearchResultComponent} from './search-result/search-result.component';
 import {WishlistComponent} from './wishlist/wishlist.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AdminComponent} from './admin/admin.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'search', component: SearchResultComponent},
   {path: 'advancesearch', component: AdvancesearchComponent},
   {path: 'index', component: WelcomePageComponent},
-  {path: 'search-result', component: SearchresultComponent},
+  {path: 'search-result', component: SearchResultComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegisterComponent},
   {path: 'wishlist', component: WishlistComponent},
@@ -75,9 +75,10 @@ export class AppRoutingModule {
 }
 
 export const routingComponents = [LoginComponent,
-  RegistrationComponent,
+  // RegistrationComponent,
   AdvancesearchComponent,
-  SearchresultComponent,
+  SearchResultComponent,
+  WelcomePageComponent,
   ErrorpageComponent,
   RegisterComponent,
   LoginComponent];

@@ -4,9 +4,9 @@ import {HttpErrorResponse} from '@angular/common/http';
 
 import {Observable, throwError} from 'rxjs';
 import {catchError, map, retry} from 'rxjs/operators';
-import {BookDataModel} from "../model/book-data-model";
-import {Router} from "@angular/router";
-import {Config} from "../../server.service";
+import {BookDataModel} from '../model/book-data-model';
+import {Router} from '@angular/router';
+import {Config} from '../../server.service';
 
 
 const httpOptions = {
@@ -38,7 +38,7 @@ export class ServerService {
     };
 
     console.log('getting book details');
-    return this.http.get(this.openLibUrl + olId)
+    return this.http.get(this.openLibUrl + olId, corsheader)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -66,14 +66,14 @@ export class ServerService {
     return this.http.get(searchQueryUrl)
       .pipe(
         retry(3),
-        map(res  => {
+        map(res => {
           let books: BookDataModel[] = res['docs'];
           books = books.map(this.optimizeBookData);
 
           return books;
         }),
         // catchError(this.handleError)
-      )
+      );
   }
 
   private optimizeBookData(data: BookDataModel): BookDataModel {
@@ -81,9 +81,9 @@ export class ServerService {
       cover_edition_key: data.cover_edition_key,
       title: data.title,
       author_name: data.author_name,
-      subject: data.subject == null ? [""] : data.subject.slice(0, 3),
+      subject: data.subject == null ? [''] : data.subject.slice(0, 3),
       cover_i: data.cover_i == null ?
-        "/assets/img/cover-missing.jpg" :
+        '/assets/img/cover-missing.jpg' :
         `http://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg`
     };
 
@@ -91,7 +91,7 @@ export class ServerService {
   }
 
   redirectToSearchResults(searchBy: string, searchString: string) {
-    this.router.navigate(['/search'], {queryParams: { searchBy: searchBy, q: searchString }});
+    this.router.navigate(['/search'], {queryParams: {searchBy: searchBy, q: searchString}});
   }
 
   isBookOnWishlist(olId) {
