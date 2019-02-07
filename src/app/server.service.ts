@@ -79,7 +79,7 @@ export class ServerService {
 
     const postData = new FormData();
     postData.append('OLID', olId);
-    return this.http.post('http://localhost:8080/wishlist/onwishlist', postData, corsheader);
+    return this.http.post('http://totallylegit.xyz:8080/wishlist/onwishlist', postData, corsheader);
   }
 
   addToWishList(olId) {
@@ -96,7 +96,7 @@ export class ServerService {
 
     const postData = new FormData();
     postData.append('OLID', olId);
-    return this.http.post('http://localhost:8080/wishlist/add', postData, corsheader);
+    return this.http.post('http://totallylegit.xyz:8080/wishlist/add', postData, corsheader);
   }
 
   removeFromWishList(olId) {
@@ -113,7 +113,7 @@ export class ServerService {
 
     const postData = new FormData();
     postData.append('OLID', olId);
-    return this.http.post('http://localhost:8080/wishlist/remove', postData, corsheader);
+    return this.http.post('http://totallylegit.xyz:8080/wishlist/remove', postData, corsheader);
   }
 
   getWishlist() {
@@ -129,7 +129,7 @@ export class ServerService {
     };
     const postData = new FormData();
     postData.append('get', 'wishlist');
-    return this.http.post('http://localhost:8080/wishlist/getwishlist', postData, corsheader);
+    return this.http.post('http://totallylegit.xyz:8080/wishlist/getwishlist', postData, corsheader);
   }
 
   getConfig_1() {
