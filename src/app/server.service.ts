@@ -40,7 +40,7 @@ export class ServerService {
     };
 
     console.log('getting book details');
-    return this.http.get(this.openLibUrl + olId)
+    return this.http.get(this.openLibUrl + olId, corsheader)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -48,8 +48,17 @@ export class ServerService {
   }
 
   quickSearch(searchString) {
+    // Adding CORS header
+    const corsheader = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': '*'
+      })
+    };
+
     console.log('getting book details');
-    return this.http.get(this.openLibTitleSearchUrl + searchString.replace(' ', '+'))
+    return this.http.get(this.openLibTitleSearchUrl + searchString.replace(' ', '+'), corsheader)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
