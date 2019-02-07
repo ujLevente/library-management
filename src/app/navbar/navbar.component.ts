@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   onQuickSearch(event) {
     if (event.key == "Enter" || event == "clicked on search") {
       const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-      this.serverService.redirectToSearchResults('title', inputValue);
+      this.serverService.redirectToSearchResults({ 'title': inputValue });
     }
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ServerService} from "../shared/service/server.service";
+import {SearchInputFormModel} from "./model/search-input-form-model";
 
 @Component({
   selector: 'app-advancesearch',
@@ -7,30 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdvancesearchComponent implements OnInit {
 
-//   private keyWords = {
-//     filed1: string
-//   };
-//
-//   title: string;
-//   author: string;
-//   isbn: string;
-//   subject: string;
-//   place: string;
-//   person: string;
-//   publisher: string;
-//   keyWords: object KeyWords ;
-// )
+  private formData: SearchInputFormModel = {};
 
-
-
-  constructor() { }
+  constructor(private sharedService: ServerService) { }
 
   ngOnInit() {
   }
 
-  advanceSearchHandle(): void {
-
+  onSubscribe() {
+    this.sharedService.redirectToSearchResults(this.formData);
   }
-
 }
 

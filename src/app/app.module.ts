@@ -27,6 +27,9 @@ import {AuthGuardService as AuthGuard} from './auth/auth-guard.service';
 import {RoleGuardService as RoleGuard} from './auth/role-guard.service';
 import { NopermissionComponent } from './auth/nopermission/nopermission.component';
 import {httpInterceptorProviders} from './auth/auth-interceptor';
+import {MatFormFieldModule, MatInputModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -59,7 +62,11 @@ import {httpInterceptorProviders} from './auth/auth-interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatInputModule
   ],
   providers: [ServerService, AuthGuard, RoleGuard, httpInterceptorProviders],
   bootstrap: [AppComponent]
