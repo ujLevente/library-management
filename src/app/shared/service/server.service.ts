@@ -90,8 +90,9 @@ export class ServerService {
     return book;
   }
 
-  redirectToSearchResults(searchBy: string, searchString: string) {
-    this.router.navigate(['/search'], {queryParams: { searchBy: searchBy, q: searchString }});
+  redirectToSearchResults(queryParameters) {
+    console.log(queryParameters);
+    this.router.navigate(['/search'], { queryParams: queryParameters });
   }
 
   isBookOnWishlist(olId) {

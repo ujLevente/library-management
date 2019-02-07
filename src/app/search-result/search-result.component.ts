@@ -13,14 +13,13 @@ export class SearchResultComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
   private searchResult: BookDataModel[];
-  private searchBy: string;
-  private searchString: string;
   private baseUrl = "http://openlibrary.org/search.json?";
+  private queryData: string[] = [];
+
   constructor(private sharedService: ServerService, route: ActivatedRoute) {
     this.subscriptions.push(
       route.queryParams.subscribe(params => {
-        this.searchString = params['q'];
-        this.searchBy = params['searchBy'];
+        Object.keys(params).forEach(key => this.queryData.push(key + "=" + params[key]) )
       })
     );
   }
@@ -30,8 +29,7 @@ export class SearchResultComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    let searchUrl = `${this.baseUrl}${this.searchBy}=${this.searchString}`;
-
+    let searchUrl = this.baseUrl + this.queryData.join("&");
     this.subscriptions.push(
       this.sharedService.getBooksByQuery(searchUrl, 30, 0).subscribe(
       res => this.searchResult = res
