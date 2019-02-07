@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit} from '@angular/core';
-import {ServerService} from '../server.service';
+import {ServerService} from '../shared/service/server.service';
 import {extractStyleParams} from '@angular/animations/browser/src/util';
 import {ActivatedRoute} from '@angular/router';
 

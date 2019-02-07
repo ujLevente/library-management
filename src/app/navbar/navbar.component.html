@@ -15,11 +15,11 @@
       <span class="navbar-toggler-bar navbar-kebab"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-      <form role="search" class="navbar-form-custom" [formGroup]="form">
+      <form role="search" class="navbar-form-custom">
         <div class="input-group no-border">
-          <input id="qsinput" type="text" value="" class="form-control" placeholder="Search...">
+          <input (keypress)="onQuickSearch($event)" id="qsinput" type="text" class="form-control" placeholder="Search...">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div (click)="onQuickSearch('clicked on search')" id="quick-search-btn" class="input-group-text">
               <i class="nc-icon nc-zoom-split"></i>
             </div>
           </div>
@@ -35,14 +35,6 @@
               <span class="d-lg-none d-md-block">Stats</span>
             </p>
           </a>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn-magnify" (click)="onQuickSearch()">
-            <i class="nc-icon nc-layout-11"></i>
-            <p>
-              <span class="d-lg-none d-md-block">Stats</span>
-            </p>
-          </button>
         </li>
 
         <li class="nav-item btn-rotate dropdown">

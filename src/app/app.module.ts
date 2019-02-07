@@ -8,14 +8,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdvancesearchComponent } from './advancesearch/advancesearch.component';
-import {FormsModule} from '@angular/forms';
-import { SearchresultComponent } from './searchresult/searchresult.component';
+import {FormsModule} from "@angular/forms";
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {BookdetailsComponent} from './bookdetails/bookdetails.component';
-import {ServerService} from './server.service';
+import {BookdetailsComponent} from "./bookdetails/bookdetails.component";
+import {ServerService} from "./shared/service/server.service";
 import { BookSliderComponent } from './welcome-page/book-slider/book-slider.component';
-import {WelcomePageComponent} from './welcome-page/welcome-page.component';
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import { SearchResultComponent } from './search-result/search-result.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import {PmComponent} from './auth/pm/pm.component';
 import {AdminComponent} from './admin/admin.component';
@@ -36,11 +36,11 @@ import {httpInterceptorProviders} from './auth/auth-interceptor';
     SidebarComponent,
     BookdetailsComponent,
     AdvancesearchComponent,
-    SearchresultComponent,
     ErrorpageComponent,
     SidebarComponent,
     routingComponents,
     WelcomePageComponent,
+    SearchResultComponent,
     BookSliderComponent,
     WishlistComponent,
   //  AUTH

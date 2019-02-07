@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServerService} from '../server.service';
+import {ServerService} from "../shared/service/server.service";
 import {FormsModule, FormGroup, FormControl} from '@angular/forms';
 import {TokenStorageService} from '../auth/token-storage.service';
 
@@ -36,15 +36,11 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  onQuickSearch() {
-    const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
-    this.serverService.quickSearch(inputValue).subscribe(results => this.qSearchResult(results));
-
-  }
-
-  qSearchResult(results) {
-    console.log(results.docs[0].edition_key[0]);
-    window.location.href = '/book/' + results.docs[0].cover_edition_key;
+  onQuickSearch(event) {
+    if (event.key == "Enter" || event == "clicked on search") {
+      const inputValue = (<HTMLInputElement>document.getElementById('qsinput')).value;
+      this.serverService.redirectToSearchResults('title', inputValue);
+    }
   }
 
   logout() {
